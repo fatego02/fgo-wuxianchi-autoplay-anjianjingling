@@ -10,7 +10,7 @@ RunOnce=1
 EnableWindow=
 MacroID=2e244fa6-3263-4c10-85da-5ccb9ccfcaa1
 Description=无限池1
-Enable=1
+Enable=0
 AutoRun=0
 [Repeat]
 Type=0
@@ -80,7 +80,7 @@ Delay 4765
 LeftClick 1
 
 '==========这里开始for循环
-For 90
+For 180
 
 MoveTo 1170, 771
 If i = 1 Then 
@@ -258,7 +258,7 @@ MoveTo 324, 708
 Delay 1252
 LeftClick 1
 MoveTo 959, 824
-Delay 41816
+Delay 50816
 LeftDoubleClick 1
 Delay 53
 Delay 629
@@ -296,10 +296,10 @@ Delay 75
 Delay 65
 LeftClick 1
 MoveTo 1513, 920
-Delay 1107
+Delay 4107
 LeftClick 1
 MoveTo 1229, 792
-Delay 2994
+Delay 3000
 LeftClick 1
 Delay 5000
 
