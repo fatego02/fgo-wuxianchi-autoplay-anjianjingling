@@ -25,7 +25,15 @@ SetupOCXFile=
 [Script]
 i = 1
 
-TracePrint i
+pyframeX = 655
+pyframeY = 313
+pycolor = "F1E9D8"
+pygreenX = 1608
+pygreenY = 473
+pygreencolor = "63D99A"
+goldenappleX = 639
+goldenappleY = 543
+goldenapplecolor = "0FB9EC"
 
 
 '==========以下是按键精灵录制的内容==========
@@ -44,9 +52,9 @@ Delay 5000
 '==========此处加入助战判断语句
 
 Do While True
-	FindColorEx 654, 312, 656, 314, "F1E9D8", 0, 0.98, x, y
+	FindColorEx pyframeX-1, pyframeY-1, pyframeX+1, pyframeY+1, pycolor, 0, 0.98, x, y
 	If x > 0 and y > 0 Then 
-		FindColorEx 1607, 472, 1609, 474, "63D99A", 0, 0.98, x, y
+		FindColorEx pygreenX-1, pygreenY-1, pygreenX+1, pygreenY+1, pygreencolor, 0, 0.98, x, y
 		If x > 0 and y > 0 Then 
 			Exit Do
 		Else 
@@ -305,7 +313,7 @@ Delay 5000
 
 '==========以上是按键精灵录制的内容==========
 '==========吃苹果判断！！！
-FindColorEx 638, 542, 640, 544, "0FB9EC", 0, 0.9, x, y
+FindColorEx goldenappleX-1, goldenappleY-1, goldenappleX+1, goldenappleY, goldenapplecolor, 0, 0.9, x, y
 If x > 0 and y > 0 Then 
 	MoveTo 639, 543
 	Delay 100
@@ -317,9 +325,9 @@ If x > 0 and y > 0 Then
 End If
 '=========助战判断
 Do While True
-	FindColorEx 654, 312, 656, 314, "F1E9D8", 0, 0.98, x, y
+	FindColorEx pyframeX-1, pyframeY-1, pyframeX+1, pyframeY+1, pycolor, 0, 0.98, x, y
 	If x > 0 and y > 0 Then 
-		FindColorEx 1607, 472, 1609, 474, "63D99A", 0, 0.98, x, y
+		FindColorEx pygreenX-1, pygreenY-1, pygreenX+1, pygreenY+1, pygreencolor, 0, 0.98, x, y
 		If x > 0 and y > 0 Then 
 			Exit Do
 		Else 
