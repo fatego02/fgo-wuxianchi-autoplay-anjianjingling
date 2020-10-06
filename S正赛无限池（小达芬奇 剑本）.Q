@@ -23,6 +23,8 @@ SetupOCXFile=
 [Comment]
 
 [Script]
+Rem START
+
 i = 1//用于记录打了多少次
 
 pyframeX = 1045
@@ -48,6 +50,25 @@ firstappleY2 =801
 
 pyframeYdiff = 261
 
+skillwindowX = 1576
+skillwindowY = 244
+
+servantwindowX = 1549
+servantwindowY = 78
+
+windowcolor = "E9E9E9"
+
+turnX = 1269
+turnY = 68
+turncolor1 = "F4F4F4"
+turncolor2 = "EEEEEE"
+turncolor3 = "898989"
+
+masterX = 1762
+masterY = 201
+mastercolor = "02BFF8"
+
+
 '==========以下是按键精灵录制的内容==========
 MoveTo 1296, 334
 Delay 758
@@ -67,10 +88,60 @@ j = False
 loopcount = 0
 Do While True
 	If loopcount > 30 Then 
-		FindColorEx inpychoosingX - 1, inpychoosingY - 1, inpychoosingX + 1, inpychoosingY + 1, inpychoosingcolor, 0, 0.98, x, y
-		If x <= 0 or y <= 0 Then 
-			Goto mark1
-			TracePrint "出现错误，跳转！"
+		//debug
+		TracePrint "警告：触发自动排错机制"
+		autodebug = True
+		FindColorEx skillwindowX - 1, skillwindowY - 1, skillwindowX + 1, skillwindowY + 1, windowcolor, 0, 0.98, x, y
+		FindColorEx servantwindowX - 1, servantwindowY - 1, servantwindowX + 1, servantwindowY + 1, windowcolor, 0, 0.98, sx, sy
+		If x > 0 and y > 0 Then 
+			MoveTo x, y
+			Delay 100
+			LeftClick 1
+			TracePrint "关闭技能窗口"
+		ElseIf sx > 0 and sy > 0 Then
+			MoveTo sx, sy
+			Delay 100
+			LeftClick 1
+			TracePrint "关闭从者窗口"
+		Else 
+			TracePrint "排错失败！"
+			autodebug = False
+		End If
+		If autodebug = False Then 
+			FindColorEx masterX - 1, masterY - 1, masterX + 1, masterY + 1, mastercolor, 0, 0.98, mx, my
+			If mx > 0 and my > 0 Then 
+				autodebug = True
+			End If
+		End If
+		Delay 2000
+		FindColorEx turnX, turnY, turnX, turnY, turncolor1, 0, 1, tx1, ty1
+		FindColorEx turnX, turnY, turnX, turnY, turncolor2, 0, 1, tx2, ty2
+		FindColorEx turnX, turnY, turnX, turnY, turncolor3, 0, 1, tx3, ty3
+		If tx1 > 0 and ty1 > 0 Then 
+			TracePrint "第一回合触发排错机制"
+		ElseIf tx2 > 0 and ty2 > 0 Then
+			TracePrint "第二回合触发排错机制"
+		ElseIf tx3 > 0 and ty3 > 0 Then
+			TracePrint "第三回合触发排错机制"
+		Else 
+			TracePrint "第四甚至更高回合触发排错机制"
+		End If
+		If autodebug Then 
+			TracePrint "开始自动排错"
+			MoveTo 1669, 307
+			Delay 1000
+			LeftClick 1
+			MoveTo 1259, 272
+			Delay 1000
+			LeftClick 1
+			MoveTo 1292, 518
+			Delay 1000
+			LeftClick 1
+			MoveTo 972, 777
+			Delay 3000
+			LeftClick 1
+			Delay 10000
+			Goto START
 		End If
 	End If
 	Delay 5000
@@ -231,7 +302,7 @@ MoveTo 1322, 439
 Delay 874
 LeftClick 1
 MoveTo 1607, 806
-Delay 4450
+Delay 5450
 LeftClick 1
 MoveTo 662, 381
 Delay 3908
@@ -305,14 +376,65 @@ If x > 0 and y > 0 Then
 	Delay 5000
 End If
 '=========助战判断
+
 j = False
 loopcount = 0
 Do While True
 	If loopcount > 30 Then 
-		FindColorEx inpychoosingX - 1, inpychoosingY - 1, inpychoosingX + 1, inpychoosingY + 1, inpychoosingcolor, 0, 0.98, x, y
-		If x <= 0 or y <= 0 Then 
-			Goto mark1
-			TracePrint "出现错误，跳转！"
+		//debug
+		TracePrint "警告：触发自动排错机制"
+		autodebug = True
+		FindColorEx skillwindowX - 1, skillwindowY - 1, skillwindowX + 1, skillwindowY + 1, windowcolor, 0, 0.98, x, y
+		FindColorEx servantwindowX - 1, servantwindowY - 1, servantwindowX + 1, servantwindowY + 1, windowcolor, 0, 0.98, sx, sy
+		If x > 0 and y > 0 Then 
+			MoveTo x, y
+			Delay 100
+			LeftClick 1
+			TracePrint "关闭技能窗口"
+		ElseIf sx > 0 and sy > 0 Then
+			MoveTo sx, sy
+			Delay 100
+			LeftClick 1
+			TracePrint "关闭从者窗口"
+		Else 
+			TracePrint "排错失败！"
+			autodebug = False
+		End If
+		If autodebug = False Then 
+			FindColorEx masterX - 1, masterY - 1, masterX + 1, masterY + 1, mastercolor, 0, 0.98, mx, my
+			If mx > 0 and my > 0 Then 
+				autodebug = True
+			End If
+		End If
+		Delay 2000
+		FindColorEx turnX, turnY, turnX, turnY, turncolor1, 0, 1, tx1, ty1
+		FindColorEx turnX, turnY, turnX, turnY, turncolor2, 0, 1, tx2, ty2
+		FindColorEx turnX, turnY, turnX, turnY, turncolor3, 0, 1, tx3, ty3
+		If tx1 > 0 and ty1 > 0 Then 
+			TracePrint "第一回合触发排错机制"
+		ElseIf tx2 > 0 and ty2 > 0 Then
+			TracePrint "第二回合触发排错机制"
+		ElseIf tx3 > 0 and ty3 > 0 Then
+			TracePrint "第三回合触发排错机制"
+		Else 
+			TracePrint "第四甚至更高回合触发排错机制"
+		End If
+		If autodebug Then 
+			TracePrint "开始自动排错"
+			MoveTo 1669, 307
+			Delay 1000
+			LeftClick 1
+			MoveTo 1259, 272
+			Delay 1000
+			LeftClick 1
+			MoveTo 1292, 518
+			Delay 1000
+			LeftClick 1
+			MoveTo 972, 777
+			Delay 3000
+			LeftClick 1
+			Delay 10000
+			Goto START
 		End If
 	End If
 	Delay 5000
